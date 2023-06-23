@@ -1,9 +1,11 @@
 import { Router } from 'express'
-import { getLivros } from '../controladores/livros.js'
+import { getLivros, getLivro } from '../controladores/livro.js'
 
 const router = Router()
 
 router.get('/', getLivros)
+
+router.get('/:id', getLivro)
 
 router.post('/', (req, res) => {
     res.send('Olá, Nice API POST')
