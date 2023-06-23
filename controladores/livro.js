@@ -1,4 +1,4 @@
-import { getTodosLivros, getLivroPorId } from "../servicos/livro.js"
+import { getTodosLivros, getLivroPorId, insereLivro } from "../servicos/livro.js"
 
 function getLivros(req, res) {
     try {
@@ -21,8 +21,20 @@ function getLivro(req, res) {
     }
 }
 
+function postLivro(req, res) {
+    try {
+        const livroNovo = req.body
+        insereLivro(livroNovo)
+        res.status(201)
+        res.send("Livro inserido com sucesso")
+    } catch (error) {
+        res.status(500)
+        res.send(error.message)
+    }
+}
 
 export {
     getLivros,
-    getLivro
+    getLivro,
+    postLivro
 }
