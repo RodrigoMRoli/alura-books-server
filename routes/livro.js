@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { getLivros, getLivro, postLivro } from '../controladores/livro.js'
+import { getLivros, getLivro, postLivro, patchLivro, deleteLivro } from '../controladores/livro.js'
 
 const router = Router()
 
@@ -9,12 +9,8 @@ router.get('/:id', getLivro)
 
 router.post('/', postLivro)
 
-router.patch('/', (req, res) => {
-    res.send('Olá, Nice API PATCH')
-})
+router.patch('/:id', patchLivro)
 
-router.delete('/', (req, res) => {
-    res.send('Olá, Nice API DELETE')
-})
+router.delete('/:id', deleteLivro)
 
 export default router
