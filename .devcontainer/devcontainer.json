@@ -1,0 +1,6 @@
+{
+    "name": "Node.js",
+    "dockerFile": "../Dockerfile",
+    "appPort": [3000],
+    "customizations/vscode/extensions": ["dbaeumer.vscode-eslint"]
+}
