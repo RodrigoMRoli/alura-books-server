@@ -12,8 +12,7 @@ function getLivros(req, res) {
 
 function getLivro(req, res) {
     try {
-        const id = req.params.id
-
+        const id = parseInt(req.params.id)
         if (id && Number(id)) { // NaN é naturalmente falso
             const livro = getLivroPorId(id)
             res.send(livro)

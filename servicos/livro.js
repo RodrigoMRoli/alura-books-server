@@ -1,17 +1,18 @@
 import fs from "fs"
 
-const livros = JSON.parse( fs.readFileSync("livros.json") )
-
 function getTodosLivros() {
+    const livros = JSON.parse( fs.readFileSync("livros.json") )
     return livros
 }
 
 function getLivroPorId(id) {
+    const livros = JSON.parse( fs.readFileSync("livros.json") )
     const livroFiltrado = livros.filter(livro => livro.id === id)[0]
     return livroFiltrado
 }
 
 function insereLivro(livroNovo) {
+    const livros = JSON.parse( fs.readFileSync("livros.json") )
     const checarNomeRepetido = livros.filter(livro => livro.nome === livroNovo.nome)
     if (checarNomeRepetido.length > 0) {
         throw new Error("Esse Livro já existe no banco de dados")
@@ -20,9 +21,11 @@ function insereLivro(livroNovo) {
     const novaListaDeLivros = [ ...livros, livroNovo ]
 
     fs.writeFileSync("livros.json", JSON.stringify(novaListaDeLivros))
+    console.log(JSON.stringify(novaListaDeLivros))
 }
 
 function modificaLivro(modificacoes, id) {
+    const livros = JSON.parse( fs.readFileSync("livros.json") )
     const indiceModificado = livros.findIndex( livro => livro.id === id)
     const conteudoMudado = { ...livros[indiceModificado],  ...modificacoes} // dar uma olhada nessa função (...) depois
     // livros[indiceModificado] -> {id:"2", nome: "livro irado"}
@@ -35,6 +38,7 @@ function modificaLivro(modificacoes, id) {
 }
 
 function deletarLivro(id) {
+    const livros = JSON.parse( fs.readFileSync("livros.json") )
     delete livros[livros.findIndex( livro => livro.id === id)]
 
     fs.writeFileSync("livros.json", JSON.stringify(livros))
