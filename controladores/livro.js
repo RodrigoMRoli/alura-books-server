@@ -36,7 +36,7 @@ function postLivro(req, res) {
             res.status(201)
             res.send("Livro inserido com sucesso")
         } else {
-            res.send(422)
+            res.status(422)
             res.send("O campo nome é obrigatório")
         }
     } catch (error) {
