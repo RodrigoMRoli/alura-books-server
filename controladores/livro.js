@@ -47,7 +47,7 @@ function postLivro(req, res) {
 
 function patchLivro(req, res) {
     try {
-        const id = req.params.id
+        const id = parseInt(req.params.id)
         const body = req.body
 
         if (id && Number(id)) {
@@ -65,7 +65,7 @@ function patchLivro(req, res) {
 
 function deleteLivro(req, res){
     try {
-        const id = req.params.id
+        const id = parseInt(req.params.id)
 
         if(id && Number(id)) {
             deletarLivro(id)

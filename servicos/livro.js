@@ -27,6 +27,7 @@ function insereLivro(livroNovo) {
 function modificaLivro(modificacoes, id) {
     const livros = JSON.parse( fs.readFileSync("livros.json") )
     const indiceModificado = livros.findIndex( livro => livro.id === id)
+    console.log(id)
     const conteudoMudado = { ...livros[indiceModificado],  ...modificacoes} // dar uma olhada nessa função (...) depois
     // livros[indiceModificado] -> {id:"2", nome: "livro irado"}
     // modificações -> {nome: "nome mucho legal"}
@@ -39,7 +40,7 @@ function modificaLivro(modificacoes, id) {
 
 function deletarLivro(id) {
     const livros = JSON.parse( fs.readFileSync("livros.json") )
-    delete livros[livros.findIndex( livro => livro.id === id)]
+    livros.splice([livros.findIndex( livro => livro.id === id)], 1)
 
     fs.writeFileSync("livros.json", JSON.stringify(livros))
 }
